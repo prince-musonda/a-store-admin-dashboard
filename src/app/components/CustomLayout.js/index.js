@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import { links } from "./links.utils";
 import LoadingAnimation from "../loadingAmination";
 import { useLoadingAnimationContext } from "@/app/hooks/useLoadingAnimationContext";
+import { ProductsListProvider } from "@/app/context/productsListContext";
 
 export default function CustomLayout({ children }) {
   const urlPath = usePathname();
-  const [showLoadingAnimation] = useLoadingAnimationContext();
+  const { showLoadingAnimation } = useLoadingAnimationContext();
 
   return (
     <>

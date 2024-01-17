@@ -15,8 +15,7 @@ function convertArrayToText(array) {
 }
 
 export default function ProductForm() {
-  const [showLoadingAnimation, setShowLoadingAnimation] =
-    useLoadingAnimationContext();
+  const { setShowLoadingAnimation } = useLoadingAnimationContext();
   //successfully uploaded images
   const [uploadedImages, setUploadedImages] = useState([]);
   // selected images before upload

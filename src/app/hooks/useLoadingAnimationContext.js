@@ -5,5 +5,5 @@ export function useLoadingAnimationContext() {
   const { showLoadingAnimation, setShowLoadingAnimation } = useContext(
     LoadingAnimationContext
   );
-  return [showLoadingAnimation, setShowLoadingAnimation];
+  return { showLoadingAnimation, setShowLoadingAnimation };
 }

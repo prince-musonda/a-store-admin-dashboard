@@ -5,11 +5,11 @@ import axios from "axios";
 import ProductCard from "../components/productCard/index.js";
 import Link from "next/link.js";
 import { useLoadingAnimationContext } from "../hooks/useLoadingAnimationContext.js";
+import { useProductsListContext } from "../hooks/useProductsListContext.js";
 
 export default function ProductsPage() {
-  const [productsList, setProductsList] = useState([]);
-  const [showLoadingAnimation, setShowLoadingAnimation] =
-    useLoadingAnimationContext();
+  const { productsList, setProductsList } = useProductsListContext();
+  const { setShowLoadingAnimation } = useLoadingAnimationContext();
 
   async function getAllProducts() {
     // get all products from database
@@ -41,17 +41,16 @@ export default function ProductsPage() {
       </Link>
 
       {/*show products list */}
-      <p className="mt-5 mb-3 text-gray-500 text-xl font-black">
+      <p className="mt-5 mb-3 text-gray-500 text-2xl font-bold">
         Your Products:
       </p>
       {/* when no products exist */}
-      {!productsList && (
-        <p className="text-lg">Couln't find any products in your database</p>
-      )}
-      {/* when products exist */}
-      <div className="flex flex-wrap justify-center gap-2">
-        {productsList &&
-          productsList.map((product) => {
+      {productsList.length === 0 ? (
+        <p className="text-2xl">Couldn't find any products in your database</p>
+      ) : (
+        // when products exist
+        <div className="flex flex-wrap justify-center gap-2">
+          {productsList.map((product) => {
             const { productName, _id: productId, price, imagesUrl } = product;
             const image = imagesUrl[0];
             return (
@@ -64,7 +63,8 @@ export default function ProductsPage() {
               />
             );
           })}
-      </div>
+        </div>
+      )}
     </>
   );
 }

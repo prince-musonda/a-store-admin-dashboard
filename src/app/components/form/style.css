@@ -21,11 +21,11 @@ label {
 
 input,
 textarea {
-  @apply bg-gray-600;
-  color: white;
+  @apply bg-gray-300;
+  color: black;
 }
 
 input::placeholder,
 textarea::placeholder {
-  @apply text-gray-400;
+  @apply text-gray-500;
 }

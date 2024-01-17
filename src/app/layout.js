@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import CustomLayout from "./components/CustomLayout.js";
 import { LoadingAnimationContextProvider } from "./context/loadingAnimationContext";
+import { ProductsListProvider } from "./context/productsListContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <LoadingAnimationContextProvider>
-          <CustomLayout>{children}</CustomLayout>
+          <CustomLayout>
+            <ProductsListProvider>{children}</ProductsListProvider>
+          </CustomLayout>
         </LoadingAnimationContextProvider>
       </body>
     </html>
