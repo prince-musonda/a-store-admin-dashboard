@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Bars } from "react-loader-spinner";
+import axios from "axios";
 import "./style.css";
 
 function LoadingComponent() {
@@ -16,14 +17,17 @@ function LoadingComponent() {
 export default function ProductCard(props) {
   const [showLoadingComponent, setShowLoadingComponent] = useState(false);
 
-  async function deleteProduct(productId) {
+  async function deleteProduct() {
     try {
       console.log("deleting");
       setShowLoadingComponent(true);
-      const res = axios.delete(
-        `${process.env.SERVER_URL}/products/${productId}`
+      const res = await axios.delete(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/products/${props.productId}`
       );
-    } catch (e) {}
+    } catch (e) {
+      console.log("unsuccessful");
+      console.log(e);
+    }
   }
 
   return (
