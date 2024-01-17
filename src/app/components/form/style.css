@@ -1,0 +1,31 @@
+label {
+  font-weight: bold;
+  color: rgba(25, 25, 26, 0.794);
+}
+
+.image-upload-btn {
+  max-width: max-content;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-picker {
+  margin-bottom: 0.2rem;
+  border: 1px solid gray;
+  max-width: max-content;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  color: rgb(0, 106, 255);
+  text-align: center;
+}
+
+input,
+textarea {
+  @apply bg-gray-600;
+  color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-400;
+}

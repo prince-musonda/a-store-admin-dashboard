@@ -16,6 +16,11 @@
   }
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +29,13 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  background-attachment: fixed;
+}
+
+.primary-btn {
+  background-color: black;
+  color: white;
+  padding: 0.3rem 1rem;
+  max-width: 100%;
+  text-align: center;
 }
