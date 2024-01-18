@@ -6,6 +6,7 @@ import ProductCard from "../components/productCard/index.js";
 import Link from "next/link.js";
 import { useLoadingAnimationContext } from "../hooks/useLoadingAnimationContext.js";
 import { useProductsListContext } from "../hooks/useProductsListContext.js";
+import { ProductsListProvider } from "../context/productsListContext.js";
 
 export default function ProductsPage() {
   const { productsList, setProductsList } = useProductsListContext();

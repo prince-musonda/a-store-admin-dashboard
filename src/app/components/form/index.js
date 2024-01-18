@@ -11,25 +11,39 @@ function convertTextToArray(text) {
   return text.split(",");
 }
 function convertArrayToText(array) {
-  return array.join(", ");
+  if (array) {
+    return array.join(", ");
+  }
 }
 
-export default function ProductForm() {
+export default function ProductForm({
+  isEditing,
+  productName,
+  price,
+  quantity,
+  description,
+  categories,
+  sizes,
+  imagesUrl,
+  productId,
+}) {
   const { setShowLoadingAnimation } = useLoadingAnimationContext();
   //successfully uploaded images
-  const [uploadedImages, setUploadedImages] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState(
+    isEditing ? imagesUrl : []
+  );
   // selected images before upload
   const [selectedImage, setSelectedImage] = useState("");
-  // upload images url list
-  const [savedImagesList, setSavedImagesList] = useState([]);
   const [formData, setFormData] = useState({
-    productName: "",
-    price: "",
-    quantity: "",
-    description: "",
-    categories: "",
-    sizes: "",
+    productName: isEditing ? productName : "",
+    price: isEditing ? price : "",
+    quantity: isEditing ? quantity : "",
+    description: isEditing ? description : "",
+    categories: isEditing ? convertArrayToText(categories) : "",
+    sizes: isEditing ? convertArrayToText(sizes) : "",
   });
+  console.log(`price ${formData.price}`);
+  console.log(`qauntity ${formData.quantity}`);
 
   const router = useRouter();
 
@@ -75,10 +89,8 @@ export default function ProductForm() {
     // input validation of required fields except "sizes"
     if (
       productName.length > 0 &&
-      price.length > 0 &&
       description.length > 0 &&
       categories.length > 0 &&
-      quantity.length > 0 &&
       !isNaN(price) &&
       !isNaN(quantity) &&
       uploadedImages.length > 0
@@ -98,16 +110,26 @@ export default function ProductForm() {
       // send data to server
       try {
         setShowLoadingAnimation(true);
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/products`,
-          dataToSend
-        );
+        const serverAddress = process.env.NEXT_PUBLIC_SERVER_URL;
+        let res;
+        // if we are updating an existing product instaed of creating a new one
+        if (isEditing) {
+          res = await axios.put(
+            `${serverAddress}/products/${productId}`,
+            dataToSend
+          );
+        } else {
+          // if we are creating a new product instead
+          res = await axios.post(`${serverAddress}/products`, dataToSend);
+        }
+
         if (res.status == 200 || res.status == 201) {
           setShowLoadingAnimation(false);
           goToProductsPage();
         }
       } catch (error) {
         console.log(error);
+        setShowLoadingAnimation(false);
       }
     } else {
       // respond to invalide user data
@@ -123,7 +145,7 @@ export default function ProductForm() {
 
       {/* product name */}
       <section className="flex flex-col mt-3">
-        <label for="productName">Product Name</label>
+        <label htmlFor="productName">Product Name</label>
         <input
           type="text"
           id="productName"
@@ -136,7 +158,7 @@ export default function ProductForm() {
 
       {/* product images */}
       <section className="flex flex-col mt-3 content-center">
-        <label for="images" className="image-picker">
+        <label htmlFor="images" className="image-picker">
           <span className="font-extrabold"> + </span>Add image
         </label>
         <input
@@ -171,7 +193,7 @@ export default function ProductForm() {
 
       {/* price */}
       <section className="flex flex-col mt-3">
-        <label for="price">price</label>
+        <label htmlFor="price">price</label>
         <input
           type="number"
           id="price"
@@ -184,7 +206,7 @@ export default function ProductForm() {
 
       {/* available quantity */}
       <section className="flex flex-col mt-3">
-        <label for="quantity">Available quantity</label>
+        <label htmlFor="quantity">Available quantity</label>
         <input
           type="number"
           id="quantity"
@@ -196,7 +218,7 @@ export default function ProductForm() {
       </section>
       {/* product description */}
       <section className="flex flex-col mt-3">
-        <label for="description">Product Details</label>
+        <label htmlFor="description">Product Details</label>
         <textarea
           id="description"
           rows="7"
@@ -209,7 +231,7 @@ export default function ProductForm() {
 
       {/* categories*/}
       <section className="flex flex-col mt-3">
-        <label for="Categories">Product Categories</label>
+        <label htmlFor="Categories">Product Categories</label>
         <textarea
           id="description"
           rows="3"
@@ -223,7 +245,7 @@ export default function ProductForm() {
 
       {/* available sizes */}
       <section className="flex flex-col mt-3">
-        <label for="sizes">
+        <label htmlFor="sizes">
           Available sizes <span className="text-black">[optional]</span>
         </label>
         <textarea

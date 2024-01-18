@@ -4,14 +4,8 @@ export default function UploadImagesPreview({ images }) {
     <div className="flex gap-1">
       {images.map((imageUrl) => {
         return (
-          <div className="border-2 border-gray-500">
-            <Image
-              src={imageUrl}
-              width={80}
-              height={80}
-              key={imageUrl}
-              alt="product image"
-            />
+          <div className="border-2 border-gray-500" key={imageUrl}>
+            <Image src={imageUrl} width={80} height={80} alt="product image" />
           </div>
         );
       })}

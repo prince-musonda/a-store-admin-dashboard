@@ -47,7 +47,10 @@ export default function ProductCard(props) {
       <p className="text-lg">{props.productName}</p>
       <p className="font-bold">k{numberFormat(props.price)}</p>
       <div className="flex flex-col gap-1 mt-1">
-        <Link href="/products/edit" className="primary-btn">
+        <Link
+          href={`/products/edit/${props.productId}`}
+          className="primary-btn"
+        >
           Edit
         </Link>
         <button className="primary-btn" onClick={deleteProduct}>
