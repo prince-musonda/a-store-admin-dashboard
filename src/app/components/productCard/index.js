@@ -43,7 +43,12 @@ export default function ProductCard(props) {
   return (
     <div className="bg-white inline-block p-4 shadow-lg relative">
       {showCardLoadingAnimation && <CardLoadingAnimation />}
-      <Image src={props.image} width={230} height={200} />
+      <Image
+        src={props.image}
+        width={230}
+        height={200}
+        alt={props.productName}
+      />
       <p className="text-lg">{props.productName}</p>
       <p className="font-bold">k{numberFormat(props.price)}</p>
       <div className="flex flex-col gap-1 mt-1">

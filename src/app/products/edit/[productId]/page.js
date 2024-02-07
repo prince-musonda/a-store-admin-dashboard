@@ -3,11 +3,9 @@
 import ProductForm from "@/app/components/form";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { useProductsListContext } from "@/app/hooks/useProductsListContext";
 
 export default function ProductEditPage({ params }) {
-  const router = useRouter();
   const productId = params.productId;
   const [product, setProduct] = useState();
   const { productsList } = useProductsListContext();

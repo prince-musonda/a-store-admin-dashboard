@@ -26,7 +26,7 @@ export default function CustomLayout({ children }) {
                 key={link.path}
                 href={link.path}
                 className={clsx(
-                  urlPath.startsWith(link.path) &&
+                  urlPath.startsWith(link.path) && 
                     "bg-white text-black font-bold p-1 rounded"
                 )}
               >

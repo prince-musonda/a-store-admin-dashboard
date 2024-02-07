@@ -47,7 +47,9 @@ export default function ProductsPage() {
       </p>
       {/* when no products exist */}
       {productsList.length === 0 ? (
-        <p className="text-2xl">Couldn't find any products in your database</p>
+        <p className="text-2xl">
+          Couldn&#39;t find any products in your database
+        </p>
       ) : (
         // when products exist
         <div className="flex flex-wrap justify-center gap-2">
