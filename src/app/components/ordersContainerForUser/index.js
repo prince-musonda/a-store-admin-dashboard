@@ -3,7 +3,10 @@ import "./styling.css";
 
 export default function OrdersContainerForUser({ usersOrders }) {
   return (
-    <div className="shadow-xl rounded bg-white p-2" key={usersOrders._id}>
+    <div
+      className="shadow-xl rounded bg-white p-2"
+      key={usersOrders.usersPhone}
+    >
       <h1>
         Orders by{" "}
         <span className="large_n_bold_text text-blue-600">
