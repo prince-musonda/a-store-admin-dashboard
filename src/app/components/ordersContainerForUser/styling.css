@@ -1,0 +1,10 @@
+.large_n_bold_text {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
