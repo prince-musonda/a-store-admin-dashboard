@@ -34,7 +34,7 @@ export default function OrderedProductCard(orderedProduct) {
       <p>To be delivered to: {orderedProduct.deliveryLocation}</p>
       <p>Contact info: {orderedProduct.contactDetail}</p>
       <div>
-        <button className="primary-btn mb-1">Mark as delivered</button>
+        <button className="primary-btn mb-1 mr-2">Mark as delivered</button>
         <button className="primary-btn">Mark payment received</button>
       </div>
     </div>

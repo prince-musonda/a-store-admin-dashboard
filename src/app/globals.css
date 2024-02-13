@@ -39,3 +39,11 @@ body {
   max-width: 100%;
   text-align: center;
 }
+
+.primary-btn:hover {
+  cursor: pointer;
+}
+.primary-btn:active {
+  scale: 1.1;
+  @apply bg-blue-600;
+}
