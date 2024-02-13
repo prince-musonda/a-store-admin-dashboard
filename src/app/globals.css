@@ -45,5 +45,5 @@ body {
 }
 .primary-btn:active {
   scale: 1.1;
-  @apply bg-blue-600;
+  @apply bg-gray-700;
 }
