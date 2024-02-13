@@ -1,10 +1,7 @@
 import Image from "next/image";
 export default function OrderedProductCard(orderedProduct) {
   return (
-    <div
-      className="bg-slate-200 text-center  rounded p-1 shadow"
-      key={orderedProduct._id}
-    >
+    <div className="bg-slate-200 text-center  rounded p-1 shadow">
       <div className="flex justify-center">
         <Image
           width={200}

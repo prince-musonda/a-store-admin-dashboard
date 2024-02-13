@@ -17,7 +17,9 @@ export default function OrdersContainerForUser({ usersOrders }) {
       {/* orders */}
       <div className="grid">
         {usersOrders.orderedProducts.map((orderedProduct) => {
-          return <OrderedProductCard {...orderedProduct} />;
+          return (
+            <OrderedProductCard {...orderedProduct} key={orderedProduct._id} />
+          );
         })}
       </div>
     </div>
