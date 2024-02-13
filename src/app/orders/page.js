@@ -53,7 +53,10 @@ export default function OrdersPage() {
     return (
       <main>
         {orders.map((usersOrder) => (
-          <OrdersContainerForUser usersOrders={usersOrder} />
+          <OrdersContainerForUser
+            usersOrders={usersOrder}
+            key={usersOrder._id}
+          />
         ))}
       </main>
     );
