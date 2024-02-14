@@ -12,13 +12,9 @@ export default function OrderedProductCard(orderedProduct) {
       </div>
       {/* product Name */}
       <p className="text-center">{orderedProduct.productName}</p>
-      {/* price */}
-      <p>k{orderedProduct.price}</p>
       {/* quantity */}
       <p>quantity: {orderedProduct.quantity}</p>
-      <p className="font-bold">
-        total price: k{+orderedProduct.quantity * +orderedProduct.price}
-      </p>
+      <p className="font-bold">total price: k{orderedProduct.price}</p>
       {/* product size */}
       {orderedProduct.size && <p>size: {orderedProduct.size}</p>}
       {/* delivery status */}
